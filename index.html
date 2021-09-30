@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The band</title>
+    <title>Document</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400&display=swap" rel="stylesheet">
@@ -101,7 +101,7 @@
                                 <p class="place-name">New York</p>
                                 <p class="place-time">Fri 27 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button href="#" class="btn s-full-width js-buy-btn ">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="s-col-full col col-three mt16px">
@@ -110,7 +110,7 @@
                                 <p class="place-name">Paris</p>
                                 <p class="place-time">Sat 28 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button href="#" class="btn s-full-width js-buy-btn">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="s-col-full col col-three mt16px">
@@ -119,7 +119,7 @@
                                 <p class="place-name">San Francisco</p>
                                 <p class="place-time">Sun 29 Nov 2016</p>
                                 <p class="place-desc">Praesent tincidunt sed tellus ut rutrum sed vitae justo.</p>
-                                <a href="#" class="btn s-full-width">Buy Tickets</a>
+                                <button href="#" class="btn s-full-width js-buy-btn">Buy Tickets</button>
                             </div>
                         </div>
                         <div class="clear"></div>
@@ -165,7 +165,7 @@
                 </div>
             <!-- image -->
                 <div id="map-img">
-                    <img src="./assets/img/map.jpg" alt="map">
+                    <img src="/assets/img/map.jpg" alt="map">
                 </div>
         </div>
         <div id="footer">
@@ -183,10 +183,10 @@
         </div>
 <!-- modal -->
     </div>
-    <div id="modal">
-        <div id="modal-container">
+    <div class="modal js-modal ">
+        <div class="modal-container js-modal-container">
             <header class="modal-header">
-                <i class="fas fa-times modal-close fa-0.5x" ></i>
+                <i class="fas fa-times modal-close fa-0.5x js-close" ></i>
                 <i class="fas fa-suitcase"></i>
                 ticket
             </header>
@@ -241,6 +241,30 @@
             }
         }
 
+    </script>
+    <script>
+        const buyBtns = document.querySelectorAll('.js-buy-btn')
+        const close = document.querySelector('.js-close')
+        const modal = document.querySelector('.js-modal')
+        const modalContainer = document.querySelector('.js-modal-container')
+        //ham hien thi form them class 'open'
+        function showBuyTicket (){
+            modal.classList.add('open')
+        }
+        //an form bo class 'open'
+        function hideBuyTicket (){
+            modal.classList.remove('open')
+        }
+
+        for(const buyBtn of buyBtns){
+            buyBtn.addEventListener('click', showBuyTicket)
+        }
+
+        close.addEventListener('click',hideBuyTicket)
+        modal.addEventListener('click',hideBuyTicket)
+        modalContainer.addEventListener('click',function(event){
+            event.stopPropagation()
+        })
     </script>
 </body>
 </html>
